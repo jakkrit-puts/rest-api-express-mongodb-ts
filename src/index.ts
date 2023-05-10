@@ -4,8 +4,15 @@ import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
 import compression from "compression";
 import cors from "cors";
+import morgan from "morgan";
+
+import config from "./config";
+import connectDB from "./config/db";
 
 const app = express();
+
+// connect db
+connectDB();
 
 app.use(
   cors({
@@ -16,14 +23,15 @@ app.use(
 app.use(compression());
 app.use(cookieParser());
 app.use(bodyParser.json());
+app.use(morgan("dev"));
 
 const server = http.createServer(app);
 
-server.listen(3000, () => {
+server.listen(config.PORT, () => {
   console.log(
     `Express (TypeScript)
-----------------------------------------;
-Server running on http://localhost:3000);
+----------------------------------------
+Server running on http://localhost:${config.PORT}
 ----------------------------------------
 `
   );
