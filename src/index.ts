@@ -6,8 +6,11 @@ import compression from "compression";
 import cors from "cors";
 import morgan from "morgan";
 
-import config from "./config";
-import connectDB from "./config/db";
+import config from "./configs";
+import connectDB from "./configs/db";
+
+import indexRouter from "./routes/index";
+import userRouter from "./routes/user";
 
 const app = express();
 
@@ -19,11 +22,19 @@ app.use(
     credentials: true,
   })
 );
-
 app.use(compression());
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(morgan("dev"));
+
+// path v1
+const path = "api"
+const version = "V1"
+const apiPathV1 = `${path}/${version}`
+
+// route prefix v1
+app.use(`/${apiPathV1}/`, indexRouter);
+app.use(`/${apiPathV1}/user`, userRouter);
 
 const server = http.createServer(app);
 
