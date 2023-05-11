@@ -1,4 +1,4 @@
-import express from "express";
+import express, { Express } from "express";
 import http from "http";
 import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
@@ -12,7 +12,7 @@ import connectDB from "./configs/db";
 import indexRouter from "./routes/index";
 import userRouter from "./routes/user";
 
-const app = express();
+const app: Express = express();
 
 // connect db
 connectDB();
@@ -42,7 +42,7 @@ server.listen(config.PORT, () => {
   console.log(
     `Express (TypeScript)
 ----------------------------------------
-Server running on http://localhost:${config.PORT}
+🏃‍♂️ Server running on http://localhost:${config.PORT}
 ----------------------------------------
 `
   );
