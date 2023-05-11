@@ -1,6 +1,6 @@
-import express from 'express';
+import { Request, Response, NextFunction } from 'express';
 
-export const login = async (req: express.Request, res: express.Response, next: express.NextFunction) => {
+export const login = async (req: Request, res: Response, next: NextFunction) => {
   try {
     
     return res.status(200).json({data: "login"});
@@ -9,7 +9,7 @@ export const login = async (req: express.Request, res: express.Response, next: e
   }
 };
 
-export const register = async (req: express.Request, res: express.Response, next: express.NextFunction) => {
+export const register = async (req: Request, res: Response, next: NextFunction) => {
   try {
     
     return res.status(200).json({data: "register"});
@@ -18,7 +18,7 @@ export const register = async (req: express.Request, res: express.Response, next
   }
 };
 
-export const getUsers = async (req: express.Request, res: express.Response, next: express.NextFunction) => {
+export const getUsers = async (req: Request, res: Response, next: NextFunction) => {
   try {
     
     return res.status(200).json({data: "get users"});
@@ -27,7 +27,7 @@ export const getUsers = async (req: express.Request, res: express.Response, next
   }
 };
 
-export const deleteUser = async (req: express.Request, res: express.Response, next: express.NextFunction) => {
+export const deleteUser = async (req: Request, res: Response, next: NextFunction) => {
   try {
     return res.status(200).json({data: "delete user"});
   } catch (error) {
@@ -35,7 +35,7 @@ export const deleteUser = async (req: express.Request, res: express.Response, ne
   }
 }
 
-export const updateUser = async (req: express.Request, res: express.Response, next: express.NextFunction) => {
+export const updateUser = async (req: Request, res: Response, next: NextFunction) => {
   try {
     return res.status(200).json({data: "update user"});
   } catch (error) {
