@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import User from '../models/user.model'
-import { LoginPayload, RegisterPayload } from 'interfaces/user.interface';
+import { LoginPayload, RegisterPayload } from '../interfaces/user.interface';
 import { validationResult } from 'express-validator';
 
 export const login = async (req: Request, res: Response, next: NextFunction) => {
