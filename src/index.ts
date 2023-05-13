@@ -9,8 +9,8 @@ import morgan from "morgan";
 import config from "./configs";
 import connectDB from "./configs/db";
 
-import indexRouter from "./routes/index";
-import userRouter from "./routes/user";
+import indexRouter from "./routes/index.router";
+import userRouter from "./routes/user.router";
 
 const app: Express = express();
 
@@ -25,6 +25,7 @@ app.use(
 app.use(compression());
 app.use(cookieParser());
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }))
 app.use(morgan("dev"));
 
 // path v1
