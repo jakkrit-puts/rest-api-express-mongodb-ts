@@ -1,14 +1,15 @@
 import express from "express";
 import { checkSchema } from 'express-validator'
-import { login, register, getUsers, deleteUser, updateUser } from "../controllers/user.ctrl";
-import { LoginValidate } from "../validations/user.validation";
+import { login, register, getUsers, deleteUserByID, updateUserByID, getUserByID } from "../controllers/user.ctrl";
+import { LoginValidate, RegisterValidate, UserValidate } from "../validations/user.validation";
 
 const router = express.Router();
 
 router.post("/login",  checkSchema(LoginValidate), login);
-router.post("/register", register);
+router.post("/register", checkSchema(RegisterValidate), register);
 router.get("/", getUsers);
-router.delete("/", deleteUser);
-router.put("/", updateUser);
+router.get("/:id", getUserByID);
+router.delete("/:id", deleteUserByID);
+router.put("/", checkSchema(UserValidate), updateUserByID);
 
 export default router;

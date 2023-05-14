@@ -11,6 +11,7 @@ import connectDB from "./configs/db";
 
 import indexRouter from "./routes/index.router";
 import userRouter from "./routes/user.router";
+import productRouter from "./routes/product.router";
 
 const app: Express = express();
 
@@ -36,6 +37,7 @@ const apiPathV1 = `${path}/${version}`
 // route prefix v1
 app.use(`/${apiPathV1}/`, indexRouter);
 app.use(`/${apiPathV1}/user`, userRouter);
+app.use(`/${apiPathV1}/product`, productRouter);
 
 const server = http.createServer(app);
 
