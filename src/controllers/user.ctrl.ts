@@ -1,6 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
 import User from '../models/user.model'
-import { LoginPayload, RegisterPayload } from '../interfaces/user.interface';
 import { validationResult } from 'express-validator';
 
 export const login = async (req: Request, res: Response, next: NextFunction) => {
@@ -16,7 +15,7 @@ export const login = async (req: Request, res: Response, next: NextFunction) => 
       });
     }
 
-    const user: LoginPayload = req.body
+    const user = req.body
     
     res.status(200).json({data: user});
   } catch (error) {
@@ -27,7 +26,7 @@ export const login = async (req: Request, res: Response, next: NextFunction) => 
 export const register = async (req: Request, res: Response, next: NextFunction) => {
   try {
 
-    const user: RegisterPayload = req.body
+    const user = req.body
     
     res.status(200).json({data: user});
   } catch (error) {
