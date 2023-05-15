@@ -17,11 +17,11 @@ export const createProduct = async (req: Request, res: Response, next: NextFunct
 
     const payload:ProductCreatePayload = req.body
 
-    const productExist = await Product.findOne({ prod_name: payload.prod_name, prod_id: payload.prod_id })
-    if (productExist) {
+    const productIDExist = await Product.findOne({ prod_id: payload.prod_id })
+    if (productIDExist) {
       return res.status(400).json({
         status: false,
-        message: "Product already exist",
+        message: "ProductID already exist",
       });
     }
     const product = await Product.create(payload)
