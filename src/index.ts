@@ -14,7 +14,6 @@ import userRouter from "./routes/user.router";
 import productRouter from "./routes/product.router";
 import categoryRouter from "./routes/category.router";
 
-
 const app: Express = express();
 
 // connect db

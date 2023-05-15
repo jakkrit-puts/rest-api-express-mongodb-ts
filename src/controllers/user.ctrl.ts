@@ -1,6 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
 import User from '../models/user.model'
-
 import { validationResult } from 'express-validator';
 import { LoginPayload, RegisterPayload, UserUpdatePayload } from '../interfaces/user.interface';
 
@@ -20,7 +19,6 @@ export const login = async (req: Request, res: Response, next: NextFunction) => 
     const payload: LoginPayload = req.body
     
     res.status(200).json({ status: true, result: payload, message: "login success" });
-
   } catch (error) {
     next(error)
   }
@@ -54,6 +52,7 @@ export const register = async (req: Request, res: Response, next: NextFunction) 
     res.status(201).json({ status: true, result: user, message: "created success" });
   } catch (error) {
     next(error)
+  }
 };
 
 export const getUsers = async (req: Request, res: Response, next: NextFunction) => {
