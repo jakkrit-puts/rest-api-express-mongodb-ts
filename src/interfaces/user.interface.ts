@@ -9,3 +9,11 @@ export interface RegisterPayload {
   firstname: string;
   lastname: string;
 }
+
+export interface UserUpdatePayload {
+  id: string;
+  password: string;
+  firstname: string;
+  lastname: string;
+}
+
