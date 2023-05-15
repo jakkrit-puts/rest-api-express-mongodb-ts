@@ -4,6 +4,7 @@ export interface ProductCreatePayload {
   prod_desc: string;
   prod_qty: number;
   prod_image_url: string;
+  cat_id: string;
 }
 
 export interface ProductUpdatePayload {
@@ -12,4 +13,5 @@ export interface ProductUpdatePayload {
   prod_desc: string;
   prod_qty: number;
   prod_image_url: string;
+  cat_id: string;
 }
