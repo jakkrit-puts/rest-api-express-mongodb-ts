@@ -17,11 +17,12 @@ export const createCategory = async (req: Request, res: Response, next: NextFunc
 
     const payload:CategoryCreatePayload = req.body
 
-    const CategoryExist = await Category.findOne({ cat_name: payload.cat_name, cat_id: payload.cat_id })
-    if (CategoryExist) {
+    const CategoryIDExist = await Category.findOne({ cat_id: payload.cat_id })
+    const CategoryNameExist = await Category.findOne({ cat_name: payload.cat_name })
+    if (CategoryIDExist || CategoryNameExist) {
       return res.status(400).json({
         status: false,
-        message: "Category already exist",
+        message: "CategoryID or CategoryName already exist",
       });
     }
     const category = await Category.create(payload)
@@ -105,6 +106,14 @@ export const updateCategoryByID = async (req: Request, res: Response, next: Next
       return res.status(400).json({
         status: false,
         message: "data not found",
+      });
+    }
+
+    const CategoryNameExist = await Category.findOne({ cat_name: payload.cat_name })
+    if (CategoryNameExist) {
+      return res.status(400).json({
+        status: false,
+        message: "CategoryName already exist",
       });
     }
 
