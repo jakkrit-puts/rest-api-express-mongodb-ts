@@ -1,4 +1,4 @@
-import express from "express";
+import express, { Express } from "express";
 import http from "http";
 import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
@@ -9,10 +9,10 @@ import morgan from "morgan";
 import config from "./configs";
 import connectDB from "./configs/db";
 
-import indexRouter from "./routes/index";
-import userRouter from "./routes/user";
+import indexRouter from "./routes/index.router";
+import userRouter from "./routes/user.router";
 
-const app = express();
+const app: Express = express();
 
 // connect db
 connectDB();
@@ -25,6 +25,7 @@ app.use(
 app.use(compression());
 app.use(cookieParser());
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }))
 app.use(morgan("dev"));
 
 // path v1
@@ -42,7 +43,7 @@ server.listen(config.PORT, () => {
   console.log(
     `Express (TypeScript)
 ----------------------------------------
-Server running on http://localhost:${config.PORT}
+🏃‍♂️ Server running on http://localhost:${config.PORT}
 ----------------------------------------
 `
   );
