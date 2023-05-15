@@ -16,3 +16,4 @@ export interface UserUpdatePayload {
   firstname: string;
   lastname: string;
 }
+

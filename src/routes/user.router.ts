@@ -1,5 +1,6 @@
 import express from "express";
 import { checkSchema } from 'express-validator'
+y
 import { login, register, getUsers, deleteUserByID, updateUserByID, getUserByID } from "../controllers/user.ctrl";
 import { LoginValidate, RegisterValidate, UserValidate } from "../validations/user.validation";
 
