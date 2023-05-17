@@ -6,10 +6,9 @@ const schema = new mongoose.Schema(
     password: { type: String, required: true, trim: true },
     firstname: { type: String, required: true, trim: true },
     lastname: { type: String, required: true, trim: true },
-    created: { type: Date, default: Date.now },
-    updated: { type: Date, default: Date.now },
   },
   {
+    timestamps: true,
     collection: "users",
   }
 );

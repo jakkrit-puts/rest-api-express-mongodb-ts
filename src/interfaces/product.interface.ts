@@ -3,7 +3,7 @@ export interface ProductCreatePayload {
   prod_name: string;
   prod_desc: string;
   prod_qty: number;
-  prod_image_url: string;
+  prod_image: string;
   cat_id: string;
 }
 
@@ -12,6 +12,6 @@ export interface ProductUpdatePayload {
   prod_name: string;
   prod_desc: string;
   prod_qty: number;
-  prod_image_url: string;
+  prod_image: string;
   cat_id: string;
 }
