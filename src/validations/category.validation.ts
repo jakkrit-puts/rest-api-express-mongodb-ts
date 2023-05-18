@@ -7,6 +7,7 @@ export const CategoryCreateValidate: Schema = {
 };
 
 export const CategoryUpdateValidate: Schema = {
+  id: { notEmpty: true, errorMessage: "id required" },
   cat_name: { notEmpty: true, errorMessage: "cat_name required" },
   cat_desc: { notEmpty: true, errorMessage: "cat_desc required" },
 };
