@@ -2,6 +2,8 @@ import { Request, Response, NextFunction } from 'express';
 import Category from '../models/category.model'
 import { validationResult } from 'express-validator';
 import { CategoryCreatePayload, CategoryUpdatePayload } from '../interfaces/category.interface';
+import { verifyObjectId } from '../utils/verify';
+import { ResponseError } from '../utils/custom-error';
 
 export const createCategory = async (req: Request, res: Response, next: NextFunction) => {
   try {
@@ -9,10 +11,7 @@ export const createCategory = async (req: Request, res: Response, next: NextFunc
     const errors = validationResult(req);
 
     if (!errors.isEmpty()) {
-      return res.status(400).json({
-        status: false,
-        errors: errors.array(),
-      });
+      throw new ResponseError("data invalid", false, 400, errors.array());
     }
 
     const payload:CategoryCreatePayload = req.body
@@ -20,10 +19,7 @@ export const createCategory = async (req: Request, res: Response, next: NextFunc
     const CategoryIDExist = await Category.findOne({ cat_id: payload.cat_id })
     const CategoryNameExist = await Category.findOne({ cat_name: payload.cat_name })
     if (CategoryIDExist || CategoryNameExist) {
-      return res.status(400).json({
-        status: false,
-        message: "CategoryID or CategoryName already exist",
-      });
+      throw new ResponseError("CategoryID or CategoryName already exist", false, 409, errors.array());
     }
     const category = await Category.create(payload)
     
@@ -48,13 +44,11 @@ export const getCategoryByID = async (req: Request, res: Response, next: NextFun
   try {
 
     const id = req.params.id
+    verifyObjectId(id);
 
     const hasId = await Category.findById(id)
     if (!hasId) {
-      return res.status(400).json({
-        status: false,
-        message: "data not found",
-      });
+      throw new ResponseError("data not found.", false, 404);
     }
 
     const category = await Category.findById(id);
@@ -69,13 +63,11 @@ export const deleteCategoryByID = async (req: Request, res: Response, next: Next
   try {
 
     const id = req.params.id
+    verifyObjectId(id);
 
     const hasId = await Category.findById(id)
     if (!hasId) {
-      return res.status(400).json({
-        status: false,
-        message: "data not found",
-      });
+      throw new ResponseError("data not found.", false, 404);
     }
 
     await Category.findOneAndDelete({ _id: id });
@@ -92,29 +84,21 @@ export const updateCategoryByID = async (req: Request, res: Response, next: Next
     const errors = validationResult(req);
 
     if (!errors.isEmpty()) {
-      return res.status(400).json({
-        status: false,
-        errors: errors.array(),
-      });
+      throw new ResponseError("data invalid", false, 400, errors.array());
     }
 
     const payload: CategoryUpdatePayload = req.body
+    verifyObjectId(payload.id);
     
     // check id
     const hasId = await Category.findById(payload.id)
     if (!hasId) {
-      return res.status(400).json({
-        status: false,
-        message: "data not found",
-      });
+      throw new ResponseError("data not found.", false, 404);
     }
 
     const CategoryNameExist = await Category.findOne({ cat_name: payload.cat_name })
     if (CategoryNameExist) {
-      return res.status(400).json({
-        status: false,
-        message: "CategoryName already exist",
-      });
+      throw new ResponseError("CategoryName already exist", false, 409);
     }
 
     const category = await Category.findOneAndUpdate({ _id: payload.id }, payload, {

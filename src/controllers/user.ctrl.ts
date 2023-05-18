@@ -2,6 +2,7 @@ import { Request, Response, NextFunction } from 'express';
 import User from '../models/user.model'
 import { validationResult } from 'express-validator';
 import { LoginPayload, RegisterPayload, UserUpdatePayload } from '../interfaces/user.interface';
+import { hashPassword } from '../utils/hash';
 
 export const login = async (req: Request, res: Response, next: NextFunction) => {
   try {
@@ -47,7 +48,14 @@ export const register = async (req: Request, res: Response, next: NextFunction) 
       });
     }
     
-    const user = await User.create(payload)
+    let user = new User();
+    user.username = payload.username;
+    user.password = await hashPassword(payload.password)
+    user.firstname = payload.firstname
+    user.lastname = payload.lastname
+
+    await user.save()
+
     
     res.status(201).json({ status: true, result: user, message: "created success" });
   } catch (error) {
