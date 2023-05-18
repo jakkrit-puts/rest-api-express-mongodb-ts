@@ -6,6 +6,7 @@ const schema = new mongoose.Schema(
     password: { type: String, required: true, trim: true },
     firstname: { type: String, required: true, trim: true },
     lastname: { type: String, required: true, trim: true },
+    role: { type: String, required: true, default: "Member" }
   },
   {
     timestamps: true,

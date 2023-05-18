@@ -12,7 +12,7 @@ export const RegisterValidate: Schema = {
   lastname: { notEmpty: true, errorMessage: "Lastname Required" },
 };
 
-export const UserValidate: Schema = {
+export const UserUpdateValidate: Schema = {
   id: { notEmpty: true, errorMessage: "ID Required" },
   username: { notEmpty: true, errorMessage: "Username Required" },
   password: { notEmpty: true, errorMessage: "Password Required" },
