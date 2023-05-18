@@ -7,7 +7,7 @@ const writeFileAsync = promisify(fs.writeFile);
 
 // path, image
 const uploadImageBase64 = async (baseImage: string, pathImg: string) => {
-  const projectPath = path.resolve("./");
+  const projectPath = path.resolve("./src/");
   const uploadPath = `${projectPath}/public/upload/images/${pathImg}/`;
   const ext = baseImage.substring(
     baseImage.indexOf("/") + 1,
