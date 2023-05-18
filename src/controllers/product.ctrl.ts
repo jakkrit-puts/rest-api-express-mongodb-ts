@@ -49,11 +49,10 @@ export const getProducts = async (
   next: NextFunction
 ) => {
   try {
+
     const product = await Product.find();
 
-    res
-      .status(200)
-      .json({ status: true, result: product, message: "get data success" });
+    res.status(200).json({ status: true, result: product, message: "get data success" });
   } catch (error) {
     next(error);
   }
