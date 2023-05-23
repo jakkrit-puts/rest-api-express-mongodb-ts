@@ -2,7 +2,7 @@ export class ResponseError {
   message!: string;
   status: boolean;
   statusCode!: number;
-  validation?: any;
+  validation!: any;
 
   constructor(
     message: string,
