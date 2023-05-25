@@ -1,4 +1,4 @@
-﻿# Rest API Express & MongoDB & TypeScript
+﻿# Restful API Express (TypeScript)
  
  ## <g-emoji class="g-emoji" alias="hammer" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f528.png">🔨</g-emoji> Tools & Libraries used
  ```
@@ -27,7 +27,14 @@ yarn build (for prod)
 
 ## <g-emoji class="g-emoji" alias="file_folder" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f4c1.png">📁</g-emoji> Project Structure
 ```
-
+./configs for config env or db for app
+./controllers for functional controllers
+./interfaces for create function interface properties 
+./middlewares for create middleware for app
+./models for describe business models (db)
+./routes for set routes to functional controller
+./utils for create function utils 
+./validations for create function validation 
 ```
 
 ### Create ENV
