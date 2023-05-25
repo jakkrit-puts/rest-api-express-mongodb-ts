@@ -1,4 +1,5 @@
-﻿## Restful API Express (TypeScript)
+﻿## Restful API Express.js (TypeScript)
+It is a typescript based boilerplate  application with the Node.js web framework.
  
  ### <g-emoji class="g-emoji" alias="hammer" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f528.png">🔨</g-emoji> Tools & Libraries used
  ```
@@ -9,6 +10,7 @@
 - Mongoose
 - Express Validator
 - Role Base
+- Swagger Docs
 ```
 
 ### <g-emoji class="g-emoji" alias="zap" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/26a1.png">⚡️</g-emoji> Usage Command
