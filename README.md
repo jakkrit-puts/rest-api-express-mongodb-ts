@@ -10,7 +10,6 @@ It is a typescript based boilerplate  application with the Node.js web framework
 - Mongoose
 - Express Validator
 - Role Base
-- Swagger Docs
 ```
 
 ### <g-emoji class="g-emoji" alias="zap" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/26a1.png">⚡️</g-emoji> Usage Command
