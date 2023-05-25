@@ -8,6 +8,7 @@
 - Hash passwords (bcrypt lib)
 - Mongoose
 - Express Validator
+- Role Base
 ```
 
 ## Usage Command
