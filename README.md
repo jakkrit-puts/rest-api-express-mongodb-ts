@@ -1,4 +1,4 @@
-﻿## Restful API Express.js (TypeScript)
+﻿## Restful API Express.js (TypeScript) + Sequelize
 It is a typescript based boilerplate  application with the Node.js web framework.
  
  ### <g-emoji class="g-emoji" alias="hammer" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f528.png">🔨</g-emoji> Tools & Libraries used
